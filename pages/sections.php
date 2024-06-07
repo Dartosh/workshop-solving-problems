@@ -37,7 +37,7 @@
                                 echo
                                     '<div class="col-xl-4 col-md-6 col-sm-12 section-tile my-5">
                                     <a href="chapters.php?section_id=' . $sections[$i]['id'] . '">
-                                    <button class="p-3 section-tile-content px-5">
+                                    <button class="p-3 px-5 section-tile-content">
                                     <span class="text-center">' . $sections[$i]['title'] . '</span>
                                     </button>
                                     </a>

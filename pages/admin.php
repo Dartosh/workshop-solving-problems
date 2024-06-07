@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/fontello.css">
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Подключение стилей Quill -->
+    <link href="../css/quill.snow.css" rel="stylesheet">
+    <!-- Подключение стилей Katex -->
+    <link href="../css/katex.min.css" rel="stylesheet">
     <title>Зеленская Ангелина - Проект</title>
 </head>
 <body>
@@ -42,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <form method="post" action="create_chapter.php">
+                            <form id="chapter-form" method="post" action="create_chapter.php">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Выберите название раздела</label>
                                     <select name="section_id" class="form-control" id="exampleFormControlSelect1">
@@ -66,6 +70,11 @@
                                 <div class="form-group" style="display: flex; justify-conent: center; flex-wrap: wrap;">
                                     <label for="exampleFormControlInput1">Введите название темы</label>
                                     <input name="chapter_title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Название раздела">
+                                </div>
+                                <div class="form-group" style="display: flex; justify-conent: center; flex-wrap: wrap;">
+                                    <label for="exampleFormControlInput1" class="w-100">Введите текст темы</label>
+                                    <div id="editor-container"></div>
+                                    <input type="hidden" name="content" id="editor-content">
                                 </div>
                                 <div style="width: 100%; display: flex; justify-conent: center; flex-wrap: wrap;">
                                     <button type="submit" class="main-button" style="margin: 1rem auto;">Создать</button>
@@ -124,6 +133,39 @@
         include('../components/footer.php');
         ?> -->
     </div>
-    <script src="../js/bootstrap.bundle.min.js"></script>
+
+    <!-- Подключение скрипта Quill -->
+    <script src="../js/quill.min.js"></script>
+    <!-- Подключение скрипта KaTeX -->
+    <script src="../js/katex.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var quill = new Quill('#editor-container', {
+                theme: 'snow',
+                modules: {
+                    formula: true,
+                    toolbar: [
+                        [{ 'font': [] }, { 'size': [] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'script': 'super' }, { 'script': 'sub' }],
+                        [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block'],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        [{ 'indent': '-1' }, { 'indent': '+1' }],
+                        [{ 'direction': 'rtl' }],
+                        [{ 'align': [] }],
+                        ['link', 'image', 'video', 'formula'],
+                        ['clean']
+                    ]
+                }
+            });
+
+            document.getElementById('chapter-form').onsubmit = function() {
+                var content = document.querySelector('input[name=content]');
+                content.value = quill.root.innerHTML;
+            };
+        });
+    </script>
 </body>
 </html>

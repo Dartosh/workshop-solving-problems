@@ -91,12 +91,18 @@ a {
     justify-content: center;
 }
 
+.section-tile a {
+    width: 100%;
+}
+
 .section-tile-content {
     font-size: x-large;
     color: var(--extra_dark);
     border-radius: 16px;
     background-color: var(--light);
     border: 2px solid var(--extra_dark);
+    width: 100%;
+    min-height: 100px;
     /* padding: 3rem; */
 }
 
@@ -212,4 +218,22 @@ a {
     max-height: 500px;
     width: auto;
     margin: auto;
+}
+
+.ql-snow {
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+    border: 1px solid #ccc !important;
+    background-color: var(--bs-body-bg);
+}
+
+.ql-snow:nth-child(3) {
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+    /* margin-top: 0.5rem; */
+}
+
+#editor-container {
+    min-height: 375px;
+    width: 100%;
 }

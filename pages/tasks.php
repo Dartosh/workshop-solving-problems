@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="../css/fontello.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Зеленская Ангелина - Проект</title>
+    <!-- Подключение стилей Quill -->
+    <link href="../css/quill.snow.css" rel="stylesheet">
+    <!-- Подключение стилей Katex -->
+    <link href="../css/katex.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper main_page_wrapper">
@@ -22,6 +26,31 @@
                             <h2 class="text-center main-h2">
                                 Задачи на тему "<?php echo $_GET["chapter_name"]; ?>"
                             </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-5">
+                            <div id="display-content" class="w-100">
+                                <?php
+                                
+                                error_reporting(E_ALL);
+                                ini_set('display_errors', 1);
+                                require_once __DIR__ . '/../config.php';
+                                
+                                $chapter_id = $_GET["chapter_id"];
+
+                                $stmt = $db->prepare("SELECT * FROM chapters WHERE id = ? ORDER BY id ASC");
+
+                                $stmt->bind_param("i", $chapter_id);
+                                $stmt->execute();
+                                $chapter_result = $stmt->get_result();
+                                $chapter = $chapter_result->fetch_all(MYSQLI_ASSOC);
+
+
+                                echo $chapter[0]['content']
+                                
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-2 mt-2">
@@ -40,7 +69,7 @@
 
                             require_once __DIR__ . '/../config.php';
 
-                            $chapter_id = $_GET["chapter_id"];
+                            // $chapter_id = $_GET["chapter_id"];
                             $chapter_name = $_GET["chapter_name"];
 
                             $stmt = $db->prepare("SELECT * FROM tasks WHERE chapter_id = ? ORDER BY id ASC");
@@ -68,6 +97,12 @@
         include('../components/footer.php');
         ?> -->
     </div>
+
+    <!-- Подключение скрипта Bootstrap -->
     <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- Подключение скрипта Quill -->
+    <script src="../js/quill.min.js"></script>
+    <!-- Подключение скрипта KaTeX -->
+    <script src="../js/katex.min.js"></script>
 </body>
 </html>

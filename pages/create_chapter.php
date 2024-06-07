@@ -25,8 +25,9 @@
 
                         $section_id = $_POST['section_id'];
                         $chapter_title = $_POST['chapter_title'];
+                        $chapter_content = $_POST['content'];
 
-                        $db->execute_query("INSERT INTO chapters (title, section_id) VALUES (?, ?)", [$chapter_title, $section_id]);
+                        $db->execute_query("INSERT INTO chapters (title, section_id, content) VALUES (?, ?, ?)", [$chapter_title, $section_id, $chapter_content]);
                     ?>
                     <div class="row">
                         <div class="col-12 mt-5 mb-5">
