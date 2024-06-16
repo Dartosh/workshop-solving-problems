@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <a href="admin.php">
+                            <a href="create.php">
                                 <button class="p-3 section-tile-content px-5">
                                     <span class="text-center">Вернуться</span>
                                 </button>
@@ -46,10 +46,6 @@
                 </div>
             </section>
         </main>
-
-        <!-- <?php
-        include('../components/footer.php');
-        ?> -->
     </div>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
