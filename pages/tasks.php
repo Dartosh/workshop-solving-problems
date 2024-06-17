@@ -24,8 +24,17 @@
                     <div class="row">
                         <div class="col-12 mt-5">
                             <h2 class="text-center main-h2">
-                                Задачи на тему "<?php echo $_GET["chapter_name"]; ?>"
+                                Тема "<?php echo $_GET["chapter_name"]; ?>"
                             </h2>
+                        </div>
+                    </div>
+                    <div class="row mb-2 mt-2">
+                        <div class="col text-center">
+                            <?php echo '<a href="../create_pptx.php?chapter_id=' . $_GET["chapter_id"] . '">' ?>
+                                <button class="main-button p-2">
+                                    <span>Скачать тему</span><i class="icon-download"></i>
+                                </button>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
@@ -53,13 +62,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-2 mt-2">
-                        <div class="col text-center">
-                            <?php echo '<a href="../create_pptx.php?chapter_id=' . $_GET["chapter_id"] . '">' ?>
-                                <button class="main-button p-2">
-                                    <span>Скачать задачи</span><i class="icon-download"></i>
-                                </button>
-                            </a>
+                    <div class="row">
+                        <div class="col-12 mt-5">
+                            <h2 class="text-center main-h2">
+                                Задачи по теме
+                            </h2>
                         </div>
                     </div>
                     <div class="row">
