@@ -23,14 +23,13 @@
     if (isset($_FILES['task_file'])) {
         $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/../public/";
         $new_file_name = generateRandomString();
-        $file_ext = strtolower(pathinfo($_FILES['task_file'][0]['name'], PATHINFO_EXTENSION));
+        $file_ext = strtolower(pathinfo($_FILES['task_file']['name'], PATHINFO_EXTENSION));
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
 
-        error_log($_FILES['task_file']['tmp_name']);
-        print_r($_FILES['task_file'][0]['tmp_name']);
+        print_r($_FILES['task_file']['errors']);
         echo 'TO:   ' . $target_file;
 
-        error_log(move_uploaded_file($_FILES['task_file'][0]['tmp_name'], $target_file));
+        error_log(move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file));
         if (move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file)) {
             echo 'DADADADA';
             $db->execute_query("INSERT INTO tasks (content, file_name, chapter_id) VALUES (?, ?, ?)", [$task_content, $new_file_name . '.' . $file_ext, $chapter_id]);
