@@ -57,8 +57,7 @@
                                                 $markdown = $markdown . '<div class="carousel-item">';
                                             }
 
-                                            echo
-                                                $markdown . '
+                                            $markdown = $markdown . '
                                                     <div class="task">
                                                         <div class="task-left-column">
                                                             <div class="task-medium-block p-1">
@@ -66,13 +65,17 @@
                                                                     <b>Задача ' . $tasks[$i]['id'] . '. </b>
                                                                     ' . $tasks[$i]['content'] . '
                                                                 </div>
-                                                            </div>
-                                                            <div class="task-medium-block p-1">
-                                                                <div class="task-content p-2">
-                                                                    <img src="../public/' . $tasks[$i]['file_name'] . '" class="img-fluid rounded mx-auto d-block profile-photo" style="max-height: 100%;" alt="photo-1">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            </div>';
+
+                                            if (isset($tasks[$i]['file_name'])) {
+                                                $markdown = $markdown . '<div class="task-medium-block p-1">
+                                                    <div class="task-content p-2">
+                                                        <img src="../public/' . $tasks[$i]['file_name'] . '" class="img-fluid rounded mx-auto d-block profile-photo" style="max-height: 100%;" alt="photo-1">
+                                                    </div>
+                                                </div>';
+                                            }
+                                                            
+                                            $markdown = $markdown . '</div>
                                                         <div class="task-large-block p-1">
                                                             <div class="task-content">
                                                             </div>
@@ -80,6 +83,8 @@
                                                     </div>
                                                 </div>
                                             ';
+
+                                            echo $markdown;
                                         }
                                     ?>
                                 </div>

@@ -89,7 +89,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <form method="post" action="create_task.php" enctype="multipart/form-data">
+                            <form method="post" action="../scripts/create_task.php" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Выберите название темы</label>
                                     <select name="chapter_id" class="form-control" id="exampleFormControlSelect1">
