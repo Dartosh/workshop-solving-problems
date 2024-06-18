@@ -20,6 +20,8 @@
     $chapter_id = $_POST['chapter_id'];
     $task_content = $_POST['task_content'];
 
+    echo exec('whoami');
+
     if (isset($_FILES['task_file'])) {
         $target_dir = "/../public/";
         $new_file_name = generateRandomString();
