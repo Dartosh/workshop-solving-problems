@@ -31,7 +31,11 @@
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
         echo $target_file;
 
-        if (move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file)) {
+        $file_uploaded = move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file);
+
+        echo $file_uploaded;
+
+        if ($file_uploaded) {
             $db->execute_query("INSERT INTO tasks (content, file_name, chapter_id) VALUES (?, ?, ?)", [$task_content, $new_file_name . '.' . $file_ext, $chapter_id]);
         } else {
             $db->execute_query("INSERT INTO tasks (content, chapter_id) VALUES (?, ?)", [$task_content, $chapter_id]);
