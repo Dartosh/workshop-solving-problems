@@ -20,22 +20,13 @@
     $chapter_id = $_POST['chapter_id'];
     $task_content = $_POST['task_content'];
 
-    echo $_FILES['task_file']['name'];
-
-    echo __DIR__;
-
     if (isset($_FILES['task_file'])) {
-        $target_dir = __DIR__ . "/../public/";
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/../public/";
         $new_file_name = generateRandomString();
         $file_ext = strtolower(pathinfo($_FILES['task_file']['name'], PATHINFO_EXTENSION));
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
-        echo $target_file;
 
-        $file_uploaded = move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file);
-
-        echo 'HHHH: ' . $file_uploaded;
-
-        if ($file_uploaded) {
+        if (move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file)) {
             echo 'DADADADA';
             $db->execute_query("INSERT INTO tasks (content, file_name, chapter_id) VALUES (?, ?, ?)", [$task_content, $new_file_name . '.' . $file_ext, $chapter_id]);
         } else {
