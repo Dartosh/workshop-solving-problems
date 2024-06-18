@@ -22,12 +22,10 @@
 
     echo $_FILES['task_file']['name'];
 
-    echo PATHINFO_EXTENSION;
-
     echo __DIR__;
 
     if (isset($_FILES['task_file'])) {
-        $target_dir = "../public/";
+        $target_dir = __DIR__ . "/../public/";
         $new_file_name = generateRandomString();
         $file_ext = strtolower(pathinfo($_FILES['task_file']['name'], PATHINFO_EXTENSION));
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
