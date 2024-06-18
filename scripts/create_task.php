@@ -26,7 +26,7 @@
         $file_ext = strtolower(pathinfo($_FILES['task_file']['name'], PATHINFO_EXTENSION));
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
 
-        print_r($_FILES['task_file']['errors']);
+        print_r($_FILES['task_file']['error']);
         echo 'TO:   ' . $target_file;
 
         error_log(move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file));
