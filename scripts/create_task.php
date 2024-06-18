@@ -27,7 +27,7 @@
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
 
         error_log($_FILES['task_file']['tmp_name']);
-        echo 'FROM:   ' . $_FILES['task_file']['tmp_name'];
+        print_r($_FILES);
         echo 'TO:   ' . $target_file;
 
         error_log(move_uploaded_file($_FILES['task_file']['tmp_name'], $target_file));
