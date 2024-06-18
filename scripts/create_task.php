@@ -21,7 +21,7 @@
     $task_content = $_POST['task_content'];
 
     if (isset($_FILES['task_file'])) {
-        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/../public/";
+        $target_dir = "/../public/";
         $new_file_name = generateRandomString();
         $file_ext = strtolower(pathinfo($_FILES['task_file']['name'], PATHINFO_EXTENSION));
         $target_file = $target_dir . basename($new_file_name . '.' . $file_ext);
