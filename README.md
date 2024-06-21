@@ -38,7 +38,7 @@
         id INT NOT NULL AUTO_INCREMENT,
         title VARCHAR(255),
         section_id  INT NOT NULL,
-        content TEXT,
+        content LONGTEXT,
         PRIMARY KEY (id),
 
         FOREIGN KEY (section_id)
