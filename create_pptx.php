@@ -79,17 +79,19 @@ foreach ($tasks as $task) {
         ->setSize(14)
         ->setColor(new Color('88633D')); // Цвет текста: #88633d
 
-    // Добавление изображения в левый нижний угол
-    $imagePath = "public" . "/" . $task['file_name'];
-    if (file_exists($imagePath)) {
-        $image = new Drawing\File();
-        $image->setPath($imagePath)
-            ->setHeight(200) // Высота изображения
-            ->setOffsetX(10) // Левый нижний угол по оси X
-            ->setOffsetY(510); // Левый верхний угол по оси Y
-        $slide->addShape($image);
-    } else {
-        // echo "Image not found: $imagePath\n";
+    if (isset($task['file_name'])) {
+        // Добавление изображения в левый нижний угол
+        $imagePath = "public" . "/" . $task['file_name'];
+        if (file_exists($imagePath)) {
+            $image = new Drawing\File();
+            $image->setPath($imagePath)
+                ->setHeight(200) // Высота изображения
+                ->setOffsetX(10) // Левый нижний угол по оси X
+                ->setOffsetY(510); // Левый верхний угол по оси Y
+            $slide->addShape($image);
+        } else {
+            // echo "Image not found: $imagePath\n";
+        }
     }
 }
 
